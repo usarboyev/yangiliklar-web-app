@@ -9,5 +9,10 @@
     <h1>{{ news.title }}</h1>
     <p>Published date: {{ news.publish_time }}</p>
     <p>{{ news.body | linebreaks }}</p>
+    
+    <div class="card-footer text-center">
+        <button type="submit" class="btn btn-success"><a href="{% url 'news_update' news.slug %}">Tahrirlash</a></button>
+        <button type="submit" class="btn btn-danger"><a href="{% url 'news_delete' news.slug %}">O'chirish</a></button>
+    </div>
 
 {% endblock content %}
