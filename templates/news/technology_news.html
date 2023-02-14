@@ -1,0 +1,23 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %} Texnologiya xabarlari {% endblock title %}
+
+{% block content %}
+
+    {% for news in technology %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>{{ news.title }}</h3>
+            </div>
+            <div class="col-sm-6">
+                <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width: 40%">
+            </div>
+            <div class="col-sm-6">
+                <p style="margin-left: -350px;">{{ news.body | truncatewords:100 }}</p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock content %}
