@@ -41,7 +41,12 @@
                             </ul>
                         </div>
                         <div class="header_top_right">
-                            <p>{% now 'jS F Y H:i' %}</p>
+                            {% if user.is_authenticated %}
+                              <p><a href="{% url 'user_profile' %}" style="color: #fff">Xush kelibsiz, {{ user.username.capitalize }}!</a></p>
+                            {% else %}
+                              <p><a href="{% url 'login' %}" style="color: #fff">Saytga kirish</a></p>
+                              <p>{% now 'jS F Y H:i' %}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
