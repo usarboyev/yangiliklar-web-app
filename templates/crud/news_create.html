@@ -6,10 +6,10 @@
 
 {% block content %}
 
-    <h2>Yangi yangilikni qo'shish</h2>
-    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-info ml-2">Yangilik qo'shish</button>
-    </form>
+        <h2>Yangi yangilikni qo'shish</h2>
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-info ml-2">Yangilik qo'shish</button>
+        </form>
 
 {% endblock content %}

@@ -5,11 +5,12 @@
 
 {% block content %}
     <h2>Web-saytga kirish - login</h2>
-    <p>Iltimos, saytga kirish uchun quyidagi formani to'ldiring!</p>
-
+    <p>Iltimos, saytga kirish uchun quyidagi formani to'ldiring!
+        Agar parolni unutgan bo'lsangiz <a href="{% url 'password_reset' %}" style="text-decoration: underline;">linkni</a> bosing.</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
+<br>
 {% endblock content %}

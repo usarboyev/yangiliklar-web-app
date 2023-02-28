@@ -1,18 +1,50 @@
 
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
 {% block title %} Texnologiya xabarlari {% endblock title %}
 
 {% block content %}
 
     <h1>{{ news.title }}</h1>
-    <p>Published date: {{ news.publish_time }}</p>
+    <p><b>Published date: {{ news.publish_time }}</b> | <i class="fa fa-eye"></i>  {% get_hit_count for news %}</p>
     <p>{{ news.body | linebreaks }}</p>
-    
-    <div class="card-footer text-center">
+
+    {% if request.user.is_authenticated and request.user.is_superuser %}
+    <div class="card-footer">
         <button type="submit" class="btn btn-success"><a href="{% url 'news_update' news.slug %}">Tahrirlash</a></button>
         <button type="submit" class="btn btn-danger"><a href="{% url 'news_delete' news.slug %}">O'chirish</a></button>
     </div>
-
+    {% endif %}
+    <br>
+    {% for comment in comments %}
+        <div class="comments" style="padding: 10px">
+            <p class="text-muted font-weight-normal">
+                {{ comment.created_time }}
+            </p>
+            <p class="font-weight-bold" style="line-height: 0.5">
+                {{ comment.user }}
+            </p>
+            {{ comment.body | linebreaks }}
+        </div>
+    {% endfor %}
+    {% if request.user.is_authenticated %}
+        <div class="col-md-8 card mb-4 mt-3">
+            <div class="card-body">
+                <h3>Izoh qoldirish</h3>
+                <form method="post" style="margin-top: 1.3em; width: 100px;">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit" class="btn btn-primary">
+                        Yuborish
+                    </button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <h3>
+            <a href="{% url 'login' %}" class="text-primary">+Izoh qoldirish</a>
+        </h3>
+    {% endif %}
 {% endblock content %}

@@ -1,5 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load hitcount_tags %}
 
 {% block title %} Bosh sahifa {% endblock title %}
 
@@ -27,7 +28,9 @@
               {% for news in news_list %}
                 <li>
                   <div class="media"> <a href="{{ news.get_absolute_url }}" class="media-left"> <img alt="" src="{{ news.image.url }}"></a>
-                    <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title">{{ news.title }}</a></div>
+                    <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title"><b>{{ news.title }}</b></a>
+                        <p>Ko'rilganlar soni: <i class="fa fa-eye"></i>  {% get_hit_count for news %}</p>
+                    </div>
                   </div>
                 </li>
               {% endfor %}
@@ -64,7 +67,9 @@
                   {% if forloop.counter > 1 %}
                     <li>
                       <div class="media wow fadeInDown"> <a href="{{ local.get_absolute_url }}" class="media-left"> <img alt="" src="{{ local.image.url }}"> </a>
-                        <div class="media-body"> <a href="{{ local.get_absolute_url }}" class="catg_title">{{ local.title }}</a> </div>
+                        <div class="media-body"> <a href="{{ local.get_absolute_url }}" class="catg_title">{{ local.title }}</a>
+                        <p>Ko'rilganlar soni: <i class="fa fa-eye"></i>  {% get_hit_count for local %}</p>
+                        </div>
                       </div>
                     </li>
                   {% endif %}
@@ -93,7 +98,8 @@
                     {% if forloop.counter > 1 %}
                       <li>
                         <div class="media wow fadeInDown"> <a href="{{ global.get_absolute_url }}" class="media-left"> <img alt="" src="{{ global.image.url }}"> </a>
-                          <div class="media-body"> <a href="{{ global.get_absolute_url }}" class="catg_title">{{ global.title }}</a> </div>
+                          <div class="media-body"> <a href="{{ global.get_absolute_url }}" class="catg_title">{{ global.title }}</a>
+                          <p>Ko'rilganlar soni: <i class="fa fa-eye"></i>  {% get_hit_count for global %}</p></div>
                         </div>
                       </li>
                     {% endif %}
@@ -121,7 +127,9 @@
                     {% if forloop.counter > 1%}
                       <li>
                         <div class="media wow fadeInDown"> <a href="{{ tech.get_absolute_url }}" class="media-left"> <img alt="" src="{{ tech.image.url }}"> </a>
-                          <div class="media-body"> <a href="{{ tech.get_absolute_url }}" class="catg_title">{{ tech.title }}</a> </div>
+                          <div class="media-body"> <a href="{{ tech.get_absolute_url }}" class="catg_title">{{ tech.title }}</a>
+                            <p>Ko'rilganlar soni: <i class="fa fa-eye"></i>  {% get_hit_count for tech %}</p>
+                          </div>
                         </div>
                       </li>
                     {% endif %}
@@ -152,7 +160,9 @@
                   {% if forloop.counter > 1%}
                     <li>
                       <div class="media wow fadeInDown"> <a href="{{ sport.get_absolute_url }}" class="media-left"> <img alt="" src="{{ sport.image.url}}"> </a>
-                        <div class="media-body"> <a href="{{ sport.get_absolute_url }}" class="catg_title">{{ sport.title }}</a> </div>
+                        <div class="media-body"> <a href="{{ sport.get_absolute_url }}" class="catg_title">{{ sport.title }}</a>
+                          <p>Ko'rilganlar soni: <i class="fa fa-eye"></i>  {% get_hit_count for sport %}</p>
+                        </div>
                       </div>
                     </li>
                   {% endif %}
@@ -160,41 +170,41 @@
               </ul>
             </div>
           </div>
-          <div class="single_post_content">
-            <h2><span>NIMADIR</span></h2>
-            <ul class="photograph_nav  wow fadeInDown">
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img2.jpg' %}" title="Photography Title 1"> <img src="{% static 'images/photograph_img2.jpg' %}" alt=""/></a> </figure>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img3.jpg' %}" title="Photography Title 2"> <img src="{% static 'images/photograph_img3.jpg' %}" alt=""/> </a> </figure>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img4.jpg' %}" title="Photography Title 3"> <img src="{% static 'images/photograph_img4.jpg' %}" alt=""/> </a> </figure>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img4.jpg' %}" title="Photography Title 4"> <img src="{% static 'images/photograph_img4.jpg' %}" alt=""/> </a> </figure>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img2.jpg' %}" title="Photography Title 5"> <img src="{% static 'images/photograph_img2.jpg' %}" alt=""/> </a> </figure>
-                </div>
-              </li>
-              <li>
-                <div class="photo_grid">
-                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img3.jpg' %}" title="Photography Title 6"> <img src="{% static 'images/photograph_img3.jpg' %}" alt=""/> </a> </figure>
-                </div>
-              </li>
-            </ul>
-          </div>
+<!--          <div class="single_post_content">-->
+<!--            <h2><span>NIMADIR</span></h2>-->
+<!--            <ul class="photograph_nav  wow fadeInDown">-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img2.jpg' %}" title="Photography Title 1"> <img src="{% static 'images/photograph_img2.jpg' %}" alt=""/></a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img3.jpg' %}" title="Photography Title 2"> <img src="{% static 'images/photograph_img3.jpg' %}" alt=""/> </a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img4.jpg' %}" title="Photography Title 3"> <img src="{% static 'images/photograph_img4.jpg' %}" alt=""/> </a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img4.jpg' %}" title="Photography Title 4"> <img src="{% static 'images/photograph_img4.jpg' %}" alt=""/> </a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img2.jpg' %}" title="Photography Title 5"> <img src="{% static 'images/photograph_img2.jpg' %}" alt=""/> </a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <div class="photo_grid">-->
+<!--                  <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{% static 'images/photograph_img3.jpg' %}" title="Photography Title 6"> <img src="{% static 'images/photograph_img3.jpg' %}" alt=""/> </a> </figure>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">

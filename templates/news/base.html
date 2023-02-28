@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -21,6 +20,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fancybox.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"-->
+<!--      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="-->
+<!--      crossorigin="anonymous" referrerpolicy="no-referrer" />-->
 
 </head>
 <body>
@@ -35,16 +37,20 @@
                     <div class="header_top">
                         <div class="header_top_left">
                             <ul class="top_nav">
-                                <li><a href="{% url 'home_page' %}">NewsFeed</a></li>
-                                <li><a href="#">Biz haqimizda</a></li>
+                                <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
+<!--                                <li><a href="#">Biz haqimizda</a></li>-->
                                 <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
+                                {% if user.is_authenticated and user.is_superuser %}
+                                <li><a href="{% url 'admin_page' %}">Admin sahifa</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                         <div class="header_top_right">
                             {% if user.is_authenticated %}
-                              <p><a href="{% url 'user_profile' %}" style="color: #fff">Xush kelibsiz, {{ user.username.capitalize }}!</a></p>
+                                <p><a href="{% url 'user_profile' %}" style="color: #fff">Xush kelibsiz, {{ user.username }}</a> |
+                                <a href="{% url 'logout' %}" style="color: red;">Chiqib ketish</a></p>
                             {% else %}
-                              <p><a href="{% url 'login' %}" style="color: #fff">Saytga kirish</a></p>
+                              <p><a href="{% url 'login' %}" style="color: #e495e3">Saytga kirish</a></p>
                               <p>{% now 'jS F Y H:i' %}</p>
                             {% endif %}
                         </div>
@@ -52,8 +58,8 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="header_bottom">
-                <div class="logo_area"><a href="{% url 'home_page' %}" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>
-                <div class="add_banner"><a href="#"><img src="{% static 'images/addbanner_728x90_V1.jpg' %}" alt=""></a></div>
+<!--                <div class="logo_area"><a href="{% url 'home_page' %}" class="logo"><img src="{% static 'images/logo.jpg' %}" alt=""></a></div>-->
+<!--                <div class="add_banner"><a href="#"><img src="{% static 'images/addbanner_728x90_V1.jpg' %}" alt=""></a></div>-->
                 </div>
             </div>
         </div>
@@ -65,12 +71,17 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
-          <li class="active"><a href="{% url 'home_page' %}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
-          <li><a href="{% url 'local_news_page' %}">Mahalliy</a></li>
-          <li><a href="{% url 'global_news_page' %}">Xorij</a></li>
-          <li><a href="{% url 'tech_news_page' %}">Texnologiya</a></li>
-          <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
-          <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
+            <li class="active"><a href="{% url 'home_page' %}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+            <li><a href="{% url 'local_news_page' %}">Mahalliy</a></li>
+            <li><a href="{% url 'global_news_page' %}">Xorij</a></li>
+            <li><a href="{% url 'tech_news_page' %}">Texnologiya</a></li>
+            <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
+            <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
+            <li>
+                <form method="get" action="{% url 'search_result' %}">
+                    <input type="search" name="q" placeholder="Qidiruv..." class="form-control">
+                </form>
+            </li>
         </ul>
       </div>
     </nav>
@@ -100,10 +111,10 @@
       </div>
     </div>
     </section>
-    
 
     {% block content %}
     {% endblock content %}
+
 
     <footer id="footer">
         <div class="footer_top">
