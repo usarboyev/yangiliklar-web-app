@@ -13,8 +13,12 @@
 
     {% if request.user.is_authenticated and request.user.is_superuser %}
     <div class="card-footer">
-        <button type="submit" class="btn btn-success"><a href="{% url 'news_update' news.slug %}">Tahrirlash</a></button>
-        <button type="submit" class="btn btn-danger"><a href="{% url 'news_delete' news.slug %}">O'chirish</a></button>
+        <button type="submit" class="btn btn-success" style="border-radius: 5px">
+            <a href="{% url 'news_update' news.slug %}">Tahrirlash</a>
+        </button>
+        <button type="submit" class="btn btn-danger" style="border-radius: 5px">
+            <a href="{% url 'news_delete' news.slug %}">O'chirish</a>
+        </button>
     </div>
     {% endif %}
     <br>
@@ -24,7 +28,7 @@
                 {{ comment.created_time }}
             </p>
             <p class="font-weight-bold" style="line-height: 0.5">
-                {{ comment.user }}
+                <i>{{ comment.user }}</i>
             </p>
             {{ comment.body | linebreaks }}
         </div>
@@ -32,11 +36,11 @@
     {% if request.user.is_authenticated %}
         <div class="col-md-8 card mb-4 mt-3">
             <div class="card-body">
-                <h3>Izoh qoldirish</h3>
-                <form method="post" style="margin-top: 1.3em; width: 100px;">
+                <h3 style="margin-left: -15px">Izoh qoldirish</h3>
+                <form method="post" style="margin-top: 1.3em; width: 100px; margin-left: -15px">
                     {% csrf_token %}
                     {{ comment_form.as_p }}
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" style="border-radius: 5px">
                         Yuborish
                     </button>
                 </form>

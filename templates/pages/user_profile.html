@@ -5,11 +5,12 @@
 
 {% block content %}
     <h3>Xush kelibsiz, {{ user.username }}</h3>
-    <h2>Siz haqingizdagi ma'lumotlar</h2>
+    <h2>Siz haqingizdagi ma'lumotlar</h2><br>
+    <label>Image:</label><br>
     <img src="{{ profile.photo.url }}" alt="profile photo" width="30%" style="margin-bottom: 5px;"><br>
-    <label>Username: </label><input value="{{ user.username }}" readonly placeholder="Kiritilmagan"><br> 
-    <label>Emailingiz: </label><input value="{{ user.email }}" readonly placeholder="Kiritilmagan"><br>
-    <label>Ismingiz: </label><input value="{{ user.first_name }}" readonly placeholder="Kiritilmagan"><br>
-    <label>Familiyangiz: </label><input value="{{ user.last_name }}" readonly placeholder="Kiritilmagan"><br>
-    <h4><a href="{% url 'password_change' %}" style="color: red;">Parolni almashtirish</a> | <a href="{% url 'edit_user_info' %}" style="color: green;">Profilni tahrirlash</a></h4>
+    <label>Username: </label><input class="form-control" value="{{ user.username }}" placeholder="Kiritilmagan"><br>
+    <label>Emailingiz: </label><input class="form-control" value="{{ user.email }}" placeholder="Kiritilmagan"><br>
+    <label>Ismingiz: </label><input class="form-control" value="{{ user.first_name }}" placeholder="Kiritilmagan"><br>
+    <label>Familiyangiz: </label><input class="form-control" value="{{ user.last_name }}" placeholder="Kiritilmagan"><br>
+    <h4><a href="{% url 'password_change' %}" style="color: red;">Parolni almashtirish</a> | <a href="{% url 'edit_user_info' %}" style="color: green;">Profilni o'zgartirish</a></h4>
 {% endblock content %}

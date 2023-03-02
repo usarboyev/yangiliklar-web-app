@@ -8,8 +8,12 @@
 
     <h2>Joriy yangilikni o'chirish</h2>
     <form action="" method="post">{% csrf_token %}
-        <p>{{ news.title | truncatewords:4 }}... ni o'chirmoqchimisiz?</p>
-        <button type="submit" class="btn btn-danger ml-2">Tasdiqlayman</button>
+
+        <h3>{{ news.title }}</h3>
+        <i>
+        <p>{{ news.body }}... <b>ni o'chirmoqchimisiz?</b></p>
+        </i>
+        <button type="submit" class="btn btn-danger ml-2" style="border-radius: 5px">Tasdiqlayman</button>
     </form>
 
 {% endblock content %}

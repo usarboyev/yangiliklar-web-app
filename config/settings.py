@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -118,6 +119,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# from django.utils.translation import gettext_lazy as _
+#
+# LANGUAGES = [
+#     ('uz', _("Uzbek")),
+#     ('ru', _("Russian")),
+#     ('en', _("English")),
+# ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -130,6 +138,7 @@ STATICFILES_FINDER = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 ]
 
+# LOCALE_PATHS = BASE_DIR, 'locale'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'

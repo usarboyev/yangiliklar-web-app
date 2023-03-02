@@ -49,7 +49,7 @@ def news_detail(request, news):
             new_comment.user = request.user
             # db ga saqlaymiz
             new_comment.save()
-            comment_form = CommentForm()
+            comment_form = CommentForm
     else:
         comment_form = CommentForm()
     context = {
