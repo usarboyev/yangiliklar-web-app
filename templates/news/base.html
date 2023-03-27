@@ -20,9 +20,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fancybox.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"-->
-<!--      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="-->
-<!--      crossorigin="anonymous" referrerpolicy="no-referrer" />-->
 
 </head>
 <body>
@@ -38,7 +35,6 @@
                         <div class="header_top_left">
                             <ul class="top_nav">
                                 <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
-<!--                                <li><a href="#">Biz haqimizda</a></li>-->
                                 <li><a href="{% url 'contact_page' %}">Biz bilan aloqa</a></li>
                                 {% if user.is_authenticated and user.is_superuser %}
                                     <li><a href="{% url 'admin_page' %}">Admin sahifa</a></li>
@@ -123,18 +119,6 @@
             <li><a href="#"><img src="{{ news.image.url }}" alt="">{{ news.title }}</a></li>
             {% endfor %}
           </ul>
-          <div class="social_area">
-            <ul class="social_nav">
-              <li class="facebook"><a href="#"></a></li>
-              <li class="twitter"><a href="#"></a></li>
-              <li class="flickr"><a href="#"></a></li>
-              <li class="pinterest"><a href="#"></a></li>
-              <li class="googleplus"><a href="#"></a></li>
-              <li class="vimeo"><a href="#"></a></li>
-              <li class="youtube"><a href="#"></a></li>
-              <li class="mail"><a href="#"></a></li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -165,7 +149,7 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="footer_widget wow fadeInRightBig">
                 <h2>Aloqa</h2>
-                <p>Bizning yangiliklar sahimazizga qandaydir takliflaringiz yoki shikoyatlaringiz bo'lsa bemalol murojaat qilishingiz mumkin</p>
+                <p>Bizning yangiliklar sahifamizga qandaydir takliflaringiz yoki shikoyatlaringiz bo'lsa bemalol murojaat qilishingiz mumkin</p>
                 <address>
                   Manzil: Uzbekiston, Toshkent viloyati, Angren shahri, Girgitton ko'chasi 108 uy. <br>
                   Telefon: +998 (99) 1234567
